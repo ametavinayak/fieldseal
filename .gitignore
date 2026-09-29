@@ -8,6 +8,7 @@ __pycache__/
 backend/data/
 scratch/
 output/*.zip
+output/pdf/
 .impeccable/
 PRODUCT.md
 docs/STATE.md

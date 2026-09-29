@@ -99,7 +99,6 @@ Offline storage uses IndexedDB in the current browser. The loaded app can retain
 | `backend/tests/test_api.py` | Integration checks against an isolated temporary database |
 | `docs/ARCHITECTURE.md` | Data model, trust boundary and PostgreSQL migration plan |
 | `docs/VALIDATION.md` | Checks performed and remaining limits |
-| `output/pdf/Drug Testing - Corrected.pdf` | Corrected seven-page submission concept deck |
 
 ## Checks
 
