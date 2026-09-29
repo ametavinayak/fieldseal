@@ -116,4 +116,4 @@ An optional GitHub Actions workflow is provided at [`docs/ci/checks.yml`](docs/c
 
 On first startup, `backend/data` receives a SQLite database and an installation-specific ECDSA demonstration key. Set `FIELDSEAL_DATA` to change the location. Keep the database and key together; deleting the key loses the installation's signing continuity. Do not use real evidence or personal records in this prototype.
 
-This is not a public production deployment: there is no user authentication, device attestation or encrypted evidence storage. See [SECURITY.md](SECURITY.md). PostgreSQL deployment is documented as a future migration, not claimed as implemented. No project license has been selected; dependency licenses remain with their respective authors.
+This is not a public production deployment: there is no user authentication, device attestation or encrypted evidence storage. PostgreSQL deployment is documented as a future migration, not claimed as implemented. No project license has been selected; dependency licenses remain with their respective authors.

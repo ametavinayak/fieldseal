@@ -5,7 +5,7 @@ import zipfile
 root = Path(__file__).resolve().parents[1]
 output = root / "output" / "FieldSeal-SIH-source.zip"
 files = []
-for name in ["README.md", "SECURITY.md", "DESIGN.md", ".gitignore", ".gitattributes", "Start-FieldSeal.ps1"]:
+for name in ["README.md", ".gitignore", ".gitattributes", "Start-FieldSeal.ps1"]:
     path = root / name
     if path.is_file():
         files.append(path)
