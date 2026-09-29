@@ -20,6 +20,7 @@ import { read, write } from "./storage";
 import { SampleCard } from "./SampleCard";
 import { Badge, when, lab } from "./presentation";
 import { MobileRecordList } from "./Mobile";
+import { STANDALONE } from "./mode";
 import type { Evidence, Intake, Kit, Scenario, Verification } from "./types";
 const outcomes: Record<Scenario, [string, string, string]> = {
   clear: [
@@ -574,8 +575,7 @@ export function Capture({
             <ShieldCheck size={28} />
             <h2>Integrity you can inspect</h2>
             <p>
-              When connected, the server hashes and signs the record using this
-              installation’s demonstration key.
+              {STANDALONE ? "This standalone demo hashes and signs the record in your browser using a locally generated demonstration key." : "When connected, the server hashes and signs the record using this installation’s demonstration key."}
             </p>
             <hr />
             <p>
@@ -1012,7 +1012,7 @@ export function Detail({
             <p className="section-copy">
               SHA-256 · ECDSA P-256
               <br />
-              Signed with the installation’s demo key.
+              {STANDALONE ? "Signed with this browser’s demo key." : "Signed with the installation’s demo key."}
             </p>
             {check && <VerifyResult value={check} />}
             <button className="primary full" onClick={verify} disabled={busy}>
@@ -1042,7 +1042,7 @@ export function VerifyResult({ value }: { value: Verification }) {
         <p>
           {value.valid
             ? value.trusted_key
-              ? "Signed by this installation’s demo key."
+              ? (STANDALONE ? "Signed by this browser’s demo key." : "Signed by this installation’s demo key.")
               : "Signature is internally valid, but the key is not trusted by this installation."
             : value.errors.join(". ")}
         </p>
@@ -1200,7 +1200,7 @@ export function Kits({ kits }: { kits: Kit[] }) {
         </div>
       </div>
       <div className="alert subtle">
-        Demonstration kit inventory. Expiry is enforced by the API as well as
+        Demonstration kit inventory. Expiry is enforced by the {STANDALONE ? "local demo logic" : "API"} as well as
         the capture flow.
       </div>
       <section className="panel table-wrap">
@@ -1255,15 +1255,16 @@ export function About({ queued }: { queued: number }) {
           <h2>Implemented</h2>
           <ul>
             <li>Persistent field records and expiry validation</li>
-            <li>SHA-256 and ECDSA P-256 server demo signatures</li>
-            <li>Append-only custody events through the API</li>
+            <li>SHA-256 and ECDSA P-256 {STANDALONE ? "browser" : "server"} demo signatures</li>
+            <li>Append-only custody events {STANDALONE ? "in browser storage" : "through the API"}</li>
             <li>Signed bundle export and integrity verification</li>
             <li>Laboratory outcome linking</li>
             <li>Browser drafts and offline queue ({queued} pending)</li>
           </ul>
-          <a href="/docs" target="_blank" rel="noreferrer">
+          {!STANDALONE && <a href="/docs" target="_blank" rel="noreferrer">
             Explore local API documentation
-          </a>
+          </a>}
+          {STANDALONE && <p>Standalone data and demo keys stay in this browser. Clearing browser storage removes them. Bundle formats are separate from the Python backend.</p>}
         </section>
         <section className="panel padded">
           <h2>Demonstrated, not validated</h2>

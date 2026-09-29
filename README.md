@@ -6,6 +6,12 @@ A working local prototype with a React/TypeScript interface, FastAPI API, SQLite
 
 **Demonstration only:** outcomes come from explicitly synthetic scenarios. Uploaded photos always require manual review. No drug classifier, accuracy claim, agency endorsement or legal-admissibility guarantee is made.
 
+## Try the single-file demo
+
+Download [**demo/FieldSeal.html**](demo/FieldSeal.html) using GitHub's **Download raw file** button, then open it in Edge or Chrome. It includes the interactive phone preview, local records, capture/review, custody updates and demo signature verification. No application backend, npm setup or external assets are needed. Use **Open full workspace** inside the preview for the desktop interface.
+
+This standalone edition stores its own fictional data and demo key in your browser. It does not connect to the FastAPI database. See [standalone instructions and testing limits](demo/README.md), including a static-server fallback if your browser restricts local-file storage.
+
 ## Prototype screenshots
 
 These are screenshots of the running application with fictional demonstration records.

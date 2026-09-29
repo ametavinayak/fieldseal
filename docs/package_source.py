@@ -9,7 +9,7 @@ for name in ["README.md", "SECURITY.md", "DESIGN.md", ".gitignore", ".gitattribu
     path = root / name
     if path.is_file():
         files.append(path)
-for folder in ["backend/app", "backend/tests", "frontend/src", "docs", ".github", "output/pdf"]:
+for folder in ["backend/app", "backend/tests", "frontend/src", "frontend/scripts", "demo", "docs", ".github", "output/pdf"]:
     files.extend(p for p in (root / folder).rglob("*") if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc" and p.name not in {"STATE.md", "DIRECTION.md", "FINISH-REVIEW.md"})
 for name in ["requirements.txt", "requirements-dev.txt"]:
     files.append(root / "backend" / name)

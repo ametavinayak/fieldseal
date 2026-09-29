@@ -23,6 +23,7 @@ import { SampleCard } from "./SampleCard";
 import type { Evidence, Intake, Kit } from "./types";
 import { Badge, when, lab } from "./presentation";
 import { MobileRecordList, MobileNavigation } from "./Mobile";
+import { STANDALONE } from "./mode";
 export default function App() {
   const [view, setView] = useState("overview"),
     [records, setRecords] = useState<Evidence[]>([]),
@@ -60,7 +61,8 @@ export default function App() {
       setOnline(true);
       await write("records", r);
       await write("kits", k);
-    } catch {
+    } catch (error) {
+      if (STANDALONE) setNotice("Local demo could not initialize: " + (error as Error).message + " Allow browser storage, or serve this HTML with a local static server.");
       setOnline(false);
       setRecords(await read<Evidence[]>("records", []));
       setKits(await read<Kit[]>("kits", []));
@@ -170,7 +172,7 @@ export default function App() {
           <div className="phone-brand">
             <ShieldCheck size={26} />
             <div>
-              FieldSeal<small>Demo field companion</small>
+              FieldSeal<small>{STANDALONE ? "Standalone browser demo" : "Demo field companion"}</small>
             </div>
           </div>
           <button
@@ -187,7 +189,7 @@ export default function App() {
             title="Check connection and synchronize queued records"
           >
             {online ? <Wifi size={16} /> : <WifiOff size={16} />}{" "}
-            {online ? "Connected" : "Offline"}
+            {online ? (STANDALONE ? "Local demo" : "Connected") : "Offline"}
             {queue.length > 0 && ` · ${queue.length} queued`}
             <RefreshCw size={13} />
           </button>

@@ -3,6 +3,7 @@ export async function api<T>(
   method = "GET",
   body?: unknown,
 ): Promise<T> {
+  if (STANDALONE) return standaloneApi<T>(path, method, body);
   const response = await fetch("/api" + path, {
     method,
     headers: { "Content-Type": "application/json" },
@@ -29,3 +30,5 @@ export function download(value: unknown, name: string) {
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+import { STANDALONE } from "./mode";
+import { standaloneApi } from "./standalone-api";

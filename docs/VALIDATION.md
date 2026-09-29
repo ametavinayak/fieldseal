@@ -26,6 +26,13 @@ Tested through Microsoft Edge UI on this machine:
 - The desktop overview was checked after clearing the viewport override. Its rail, evidence table and capture entry remained available.
 - Three screen-only mobile screenshots are committed in `docs/screenshots` and embedded in the README: sample capture, low-light review (`LOW_LIGHT` / Inconclusive), and a successful backend check of an existing signed demo record. These states were exercised through the live UI. Captures use a 390 × 844 phone-style presentation with illustrative system bars, without a hardware frame; they are browser captures rather than physical-device screenshots. The updated TypeScript/Vite build passed. This release remains a responsive browser application; no native Android package was built.
 
+## Standalone HTML edition — 30 September 2026
+
+- `npm run test:standalone` passes isolated browser-adapter checks for signing, tampering, retries/conflicts, expired kits, uploaded-photo inconclusive handling, custody/lab updates, truncated exports and malformed bundles.
+- Both `npm run build:standalone` and the normal TypeScript/Vite build pass. The single HTML embeds scripts, styles and fonts; no developer evidence database or private key is packaged. The Python backend is unchanged.
+- Edge testing uses a static-only server on port 8779, with no FastAPI endpoints: fictional seed records load, a new capture can be reviewed and sealed, and browser records persist through reload. Signature verification uses Web Crypto and a separate browser-held demonstration key.
+- Direct `file://` testing was blocked by the browser automation URL policy, so double-click launch is not recorded as verified. A static-server fallback is documented. No physical phone or native APK test is claimed.
+
 ## Scope of the evidence
 
 Synthetic scenarios validate workflow behavior, not analytical accuracy. No independently labelled chemical dataset, model benchmark, real kit experiment, laboratory integration or operational field trial has been performed. Camera permissions and physical phone-camera capture were not tested. The API upload path was checked with fixtures; no malware scanning or image-authenticity claim is made.

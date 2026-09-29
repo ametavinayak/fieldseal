@@ -1,4 +1,5 @@
-const DB = "fieldseal-demo-v1";
+import { STANDALONE } from "./mode";
+const DB = STANDALONE ? "fieldseal-standalone-v1" : "fieldseal-demo-v1";
 function open(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
     const r = indexedDB.open(DB, 1);
