@@ -87,3 +87,11 @@
   .device-preview { padding: 12px 0; }
   .device-stage { padding: 16px 0; zoom: .84; }
 }
+/* Screen-only presentation for phone-style screenshots, without hardware chrome. */
+.screen-only { padding: 0; min-height: 100dvh; justify-content: flex-start; background: white; }
+.screen-only .device-stage { padding: 0; zoom: 1; width: 100%; }
+.screen-only .device-body { padding: 0; border: 0; border-radius: 0; width: 100%; box-shadow: none; }
+.screen-only .device-body::before,
+.screen-only .device-body::after { display: none; }
+.screen-only .device-screen { width: 100%; height: 100dvh; border-radius: 0; }
+.screen-only iframe { width: 100%; }

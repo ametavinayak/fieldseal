@@ -15,17 +15,19 @@ These are screenshots of the running application with fictional demonstration re
 The responsive web app includes a dedicated phone interface: persistent bottom navigation, touch-friendly capture controls, searchable evidence entries and connected record verification. It uses the same API and stored records as the desktop workspace. This release is a browser app; an Android APK is not included.
 
 <table>
-  <tr><th>Home</th><th>Capture</th><th>Evidence detail</th></tr>
+  <tr><th>Capture</th><th>Low-light review</th><th>Integrity verified</th></tr>
   <tr>
-    <td><img src="docs/screenshots/mobile-home.png" width="240" alt="FieldSeal mobile home with recent evidence and bottom navigation"></td>
     <td><img src="docs/screenshots/mobile-capture.png" width="240" alt="Mobile capture flow with a labelled synthetic reference and photo controls"></td>
-    <td><img src="docs/screenshots/mobile-evidence.png" width="240" alt="Mobile evidence detail with an inconclusive reading and record metadata"></td>
+    <td><img src="docs/screenshots/mobile-review.png" width="240" alt="Working low-light review showing an inconclusive result and LOW_LIGHT reason"></td>
+    <td><img src="docs/screenshots/mobile-verify.png" width="240" alt="Successful integrity verification of a saved signed demo record"></td>
   </tr>
 </table>
 
-These are captures of the working application inside an illustrative phone frame, with a 390px-wide app viewport. The device status icons and time are presentation elements, not readings from a physical phone. Sample outcomes are synthetic; the capture shown is not a real drug test.
+Three screen-only captures show the running capture workflow, its low-light review response, and a successful backend integrity check. They use a 390 × 844 phone-style presentation without a device frame. Status icons and time are illustrative; these were captured in a browser, not on physical phone hardware. Sample outcomes are synthetic; the capture shown is not a real drug test.
 
 For an interactive phone presentation, run the application and open **http://127.0.0.1:8778/?phone-preview**. The phone frame contains the live application, including normal navigation, capture and API access.
+
+For the screen-only presentation used above, open **http://127.0.0.1:8778/?phone-preview&screen-only** at a phone viewport size.
 
 ### Dashboard
 

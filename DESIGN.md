@@ -313,6 +313,8 @@ The optional `?phone-preview` route places the live application in a 390 × 844 
 
 ### Do:
 
+The additional `&screen-only` presentation removes the hardware edge, camera cutout, surrounding canvas and caption. Its rectangular screen fills the viewport, retaining the illustrative status and gesture areas. README screenshots use this mode at 390 × 844 and show capture, low-light review and completed integrity verification.
+
 - Do preserve the navy rail, white working surfaces and restrained teal actions.
 - Do keep synthetic reference labels and demonstration scope legible beside the work.
 - Do preserve the calibration card’s SVG geometry and full reference-chip sequence.
