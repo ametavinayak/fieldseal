@@ -35,24 +35,6 @@ For an interactive phone presentation, run the application and open **http://127
 
 For the screen-only presentation used above, open **http://127.0.0.1:8778/?phone-preview&screen-only** at a phone viewport size.
 
-### Dashboard
-
-Recent records, review queue, laboratory status and the field-test entry point.
-
-![FieldSeal dashboard](docs/screenshots/dashboard.png)
-
-### Capture workspace
-
-Guided capture with a synthetic calibration reference and explicit quality-review scenarios.
-
-![FieldSeal capture workspace](docs/screenshots/capture.png)
-
-### Evidence detail
-
-The recorded capture, case context, custody trail and bundle-verification action.
-
-![FieldSeal evidence detail](docs/screenshots/evidence.png)
-
 ## Run on Windows
 
 Install Python 3.10+ and Node.js 22.12+ (Node 24 is also supported), then open PowerShell in this directory:
@@ -97,8 +79,7 @@ Offline storage uses IndexedDB in the current browser. The loaded app can retain
 | `frontend/src` | Connected screens, responsive styles, IndexedDB queue, API client |
 | `backend/app/main.py` | Input validation, transactional SQLite storage, signatures and verification |
 | `backend/tests/test_api.py` | Integration checks against an isolated temporary database |
-| `docs/ARCHITECTURE.md` | Data model, trust boundary and PostgreSQL migration plan |
-| `docs/VALIDATION.md` | Checks performed and remaining limits |
+| `docs/REQUIREMENTS.md` | Submission scope and prototype requirements |
 
 ## Checks
 
