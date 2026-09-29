@@ -287,7 +287,9 @@ White fields with a one-pixel input border, `field` rounding, 10px 12px padding 
 
 ### Navigation
 
-The navy rail has compact left-aligned icon/text buttons, 15px 16px padding and 8px vertical gaps. Hover changes the navy tone; the current location uses the active blue-teal fill and white text. The mobile trigger has a 44px minimum target. Navigation to a screen or record resets scroll and focuses its H1; capture-step changes reset scroll and focus the step heading.
+The navy rail has compact left-aligned icon/text buttons, 15px 16px padding and 8px vertical gaps. Hover changes the navy tone; the current location uses the active blue-teal fill and white text. Navigation to a screen or record resets scroll and focuses its H1; capture-step changes reset scroll and focus the step heading.
+
+At 700px and below, a 66px navy header and a 72px bottom navigation bar frame the phone workspace. Home, Capture, Records and Verify connect to the same workflows as the desktop rail; More opens the remaining navigation with a dismissible scrim and Escape support. The navigation respects the bottom safe-area inset, marks the current page and remains clear of content through workspace padding. Phone evidence entries replace the wide records table with full-width buttons containing the record, case, outcome and capture time. Capture fields use 16px text, primary controls have a 48px minimum height, and compact quality indicators sit above the scenario selector. At 360px and below, metadata and capture-header actions stack. Interactive keyboard focus remains visible; programmatically focused screen headings omit the decorative outline on phones.
 
 ### Evidence section switchers
 

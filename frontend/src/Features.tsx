@@ -18,7 +18,8 @@ import {
 import { api, download } from "./api";
 import { read, write } from "./storage";
 import { SampleCard } from "./SampleCard";
-import { Badge, when, lab } from "./App";
+import { Badge, when, lab } from "./presentation";
+import { MobileRecordList } from "./Mobile";
 import type { Evidence, Intake, Kit, Scenario, Verification } from "./types";
 const outcomes: Record<Scenario, [string, string, string]> = {
   clear: [
@@ -383,38 +384,40 @@ export function Capture({
               review; no unvalidated substance prediction is generated.
             </div>
           </section>
-          <section className="panel padded">
+          <section className="panel padded capture-check-panel">
             <h2>Capture checks</h2>
             <p className="section-copy">
               {data.image
                 ? "Automatic checks are not validated for uploads."
                 : "Illustrative states from the selected scenario."}
             </p>
-            {["Reference card", "Lighting", "Alignment"].map((label, i) => {
-              const bad =
-                (data.scenario === "low_light" && i === 1) ||
-                (data.scenario === "missing_card" && i !== 1);
-              return (
-                <div className="quality" key={label}>
-                  <span className="quality-icon">
-                    <FileCheck2 size={21} />
-                  </span>
-                  <div>
-                    <strong>{label}</strong>
-                    <small>
-                      {data.image
-                        ? "Manual review needed"
-                        : bad
-                          ? "Retake required"
-                          : "Ready · illustrative"}
-                    </small>
+            <div className="quality-list">
+              {["Reference card", "Lighting", "Alignment"].map((label, i) => {
+                const bad =
+                  (data.scenario === "low_light" && i === 1) ||
+                  (data.scenario === "missing_card" && i !== 1);
+                return (
+                  <div className="quality" key={label}>
+                    <span className="quality-icon">
+                      <FileCheck2 size={21} />
+                    </span>
+                    <div>
+                      <strong>{label}</strong>
+                      <small>
+                        {data.image
+                          ? "Manual review needed"
+                          : bad
+                            ? "Retake required"
+                            : "Ready · illustrative"}
+                      </small>
+                    </div>
+                    <span className={bad ? "quality-warn" : "quality-pass"}>
+                      {data.image ? "—" : bad ? "Check" : <Check size={20} />}
+                    </span>
                   </div>
-                  <span className={bad ? "quality-warn" : "quality-pass"}>
-                    {data.image ? "—" : bad ? "Check" : <Check size={20} />}
-                  </span>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
             <label className="scenario">
               Demo scenario
               <select
@@ -673,10 +676,10 @@ export function Records({
             <option key={s}>{s}</option>
           ))}
         </select>
-        <span>{filtered.length} records</span>
+        <span>{filtered.length} {filtered.length === 1 ? "record" : "records"}</span>
       </div>
       <section className="panel">
-        <div className="table-wrap">
+        <div className="table-wrap desktop-records">
           <table>
             <thead>
               <tr>
@@ -718,6 +721,11 @@ export function Records({
             </div>
           )}
         </div>
+        <MobileRecordList
+          records={filtered}
+          open={open}
+          empty="No matches. Try another case reference or reading filter."
+        />
       </section>
     </>
   );
@@ -780,7 +788,7 @@ export function Detail({
       </button>
       <div className="page-head">
         <div>
-          <h1 className="detail-heading">Evidence record {record.id}</h1>
+          <h1 className="detail-heading">Evidence record <span className="dossier-id">{record.id}</span></h1>
           <p>
             {p.intake.case_ref} · {p.intake.bag_id}
           </p>

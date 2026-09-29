@@ -21,31 +21,8 @@ import { api } from "./api";
 import { read, write } from "./storage";
 import { SampleCard } from "./SampleCard";
 import type { Evidence, Intake, Kit } from "./types";
-export const when = (s: string) =>
-  new Date(s).toLocaleString("en-IN", {
-    day: "2-digit",
-    month: "short",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-export function Badge({ value }: { value: string }) {
-  return (
-    <span
-      className={
-        "badge " +
-        (value === "Inconclusive"
-          ? "amber"
-          : value === "Presumptive indication"
-            ? "teal"
-            : "neutral")
-      }
-    >
-      {value}
-    </span>
-  );
-}
-export const lab = (r: Evidence) =>
-  r.events.find((e) => e.payload.action === "Lab outcome linked");
+import { Badge, when, lab } from "./presentation";
+import { MobileRecordList, MobileNavigation } from "./Mobile";
 export default function App() {
   const [view, setView] = useState("overview"),
     [records, setRecords] = useState<Evidence[]>([]),
@@ -64,6 +41,14 @@ export default function App() {
       heading.focus({ preventScroll: true });
     }
   }, [view, selected?.id]);
+  useEffect(() => {
+    if (!menu) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenu(false);
+    };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, [menu]);
   async function refresh() {
     try {
       const [r, k] = await Promise.all([
@@ -123,11 +108,18 @@ export default function App() {
     (r) => r.payload.result.outcome === "Inconclusive",
   );
   return (
-    <div className="app">
+    <div className={"app view-" + view}>
       <a className="skip" href="#main">
         Skip to content
       </a>
-      <aside className={menu ? "sidebar open" : "sidebar"}>
+      {menu && (
+        <button
+          className="menu-scrim"
+          aria-label="Close navigation"
+          onClick={() => setMenu(false)}
+        />
+      )}
+      <aside id="main-navigation" className={menu ? "sidebar open" : "sidebar"}>
         <div className="brand">
           FieldSeal<span>by Team BarelyLegal</span>
         </div>
@@ -175,6 +167,12 @@ export default function App() {
       </aside>
       <div className="workspace">
         <header className="topbar">
+          <div className="phone-brand">
+            <ShieldCheck size={26} />
+            <div>
+              FieldSeal<small>Demo field companion</small>
+            </div>
+          </div>
           <button
             className="icon mobile-menu"
             aria-label="Toggle navigation"
@@ -259,8 +257,15 @@ export default function App() {
                       View all records <ArrowRight size={16} />
                     </button>
                   </div>
-                  <RecordTable
-                    records={records.slice(0, 6)}
+                  <div className="desktop-records">
+                    <RecordTable
+                      records={records.slice(0, 6)}
+                      open={open}
+                      loading={loading}
+                    />
+                  </div>
+                  <MobileRecordList
+                    records={records.slice(0, 3)}
                     open={open}
                     loading={loading}
                   />
@@ -353,6 +358,12 @@ export default function App() {
           <span>FieldSeal v0.1.0 · Synthetic demonstration</span>
         </footer>
       </div>
+      <MobileNavigation
+        view={view}
+        menu={menu}
+        navigate={navigate}
+        toggleMenu={() => setMenu(!menu)}
+      />
     </div>
   );
 }

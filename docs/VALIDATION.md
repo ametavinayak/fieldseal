@@ -18,6 +18,14 @@ Tested through Microsoft Edge UI on this machine:
 - Desktop dashboard, capture and evidence layout inspected. Mobile dashboard, capture controls and evidence metadata inspected at effective 390 CSS-pixel width (browser retained its inherited zoom). No horizontal document overflow in the checked mobile capture/evidence states; tables scroll inside their own containers.
 - Screen and capture-step navigation now reset position and focus a heading. Record section controls use ordinary pressed buttons.
 
+## Mobile UI update
+
+- TypeScript checking and the Vite production build passed again after adding the dedicated mobile navigation and evidence list components. Backend code was unchanged; the integration-test result above belongs to the original prototype validation.
+- In Edge at effective 390 CSS pixels: home, capture intake, sample capture, low-light inconclusive review, records search and filtering, evidence detail, and the More drawer to Kit register were exercised. The mobile verification screen accepted an intact signed demo record and rejected a modified copy.
+- A narrow 320 CSS-pixel verification layout had no horizontal document overflow. The inspected 390px home and evidence states also stayed within the viewport. This is browser viewport testing, not physical-device certification.
+- The desktop overview was checked after clearing the viewport override. Its rail, evidence table and capture entry remained available.
+- Three actual mobile screenshots are committed in `docs/screenshots` and embedded in the README. This release remains a responsive browser application; no native Android package was built.
+
 ## Scope of the evidence
 
 Synthetic scenarios validate workflow behavior, not analytical accuracy. No independently labelled chemical dataset, model benchmark, real kit experiment, laboratory integration or operational field trial has been performed. Camera permissions and physical phone-camera capture were not tested. The API upload path was checked with fixtures; no malware scanning or image-authenticity claim is made.

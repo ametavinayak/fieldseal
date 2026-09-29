@@ -10,6 +10,21 @@ A working local prototype with a React/TypeScript interface, FastAPI API, SQLite
 
 These are screenshots of the running application with fictional demonstration records.
 
+### Mobile app UI
+
+The responsive web app includes a dedicated phone interface: persistent bottom navigation, touch-friendly capture controls, searchable evidence entries and connected record verification. It uses the same API and stored records as the desktop workspace. This release is a browser app; an Android APK is not included.
+
+<table>
+  <tr><th>Home</th><th>Capture</th><th>Evidence detail</th></tr>
+  <tr>
+    <td><img src="docs/screenshots/mobile-home.png" width="240" alt="FieldSeal mobile home with recent evidence and bottom navigation"></td>
+    <td><img src="docs/screenshots/mobile-capture.png" width="240" alt="Mobile capture flow with a labelled synthetic reference and photo controls"></td>
+    <td><img src="docs/screenshots/mobile-evidence.png" width="240" alt="Mobile evidence detail with an inconclusive reading and record metadata"></td>
+  </tr>
+</table>
+
+Screenshots were captured from the working application at an effective 390 CSS-pixel viewport. Sample outcomes are synthetic; the capture shown is not a real drug test.
+
 ### Dashboard
 
 Recent records, review queue, laboratory status and the field-test entry point.
