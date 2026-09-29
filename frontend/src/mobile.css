@@ -14,7 +14,9 @@
   html {
     scroll-padding-top: 82px;
     scroll-padding-bottom: 96px;
+    scrollbar-width: none;
   }
+  html::-webkit-scrollbar { display: none; }
   body {
     background: #f3f6f9;
   }
@@ -81,7 +83,8 @@
     margin-bottom: 22px;
   }
   h1 {
-    font-size: 30px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 28px;
     line-height: 1.22;
     letter-spacing: -0.025em;
   }
@@ -109,7 +112,7 @@
   }
   .summary {
     background: white;
-    padding: 15px 8px;
+    padding: 16px 8px;
     border-radius: 10px;
     margin-bottom: 22px;
     gap: 0;
@@ -131,10 +134,10 @@
     line-height: 1.45;
   }
   .summary small {
-    font-size: 10px;
-    line-height: 1.5;
-    margin-top: 4px;
+    display: none;
   }
+  .summary .stat-number { display: block; font-size: 28px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+  .summary .stat-label { display: block; font-size: 11px; font-weight: 400; color: #53687d; margin-top: 4px; }
   .panel {
     border-color: #d5e1ec;
     border-radius: 12px;
@@ -283,11 +286,7 @@
     padding: 0;
   }
   footer {
-    font-size: 10px;
-    background: #f3f6f9;
-    border-top: 0;
-    padding: 0 18px 20px;
-    gap: 4px;
+    display: none;
   }
   .view-capture .page-head {
     display: grid;
@@ -296,11 +295,10 @@
     column-gap: 8px;
   }
   .view-capture .page-head h1 {
-    font-size: 27px;
+    font-size: 24px;
   }
   .view-capture .page-head p {
-    font-size: 12px;
-    max-width: 25ch;
+    display: none;
   }
   .view-capture .page-head > .secondary {
     font-size: 11px;
@@ -481,7 +479,7 @@
     padding: 10px 14px;
   }
   .detail-heading {
-    font-size: 28px;
+    font-size: 24px;
     line-height: 1.25;
   }
   .dossier-id {

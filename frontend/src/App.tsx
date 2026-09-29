@@ -224,14 +224,14 @@ export default function App() {
                 <div>
                   <FileText />
                   <span>
-                    <strong>{records.length} records</strong>
+                    <strong><span className="stat-number">{records.length}</span> <span className="stat-label">records</span></strong>
                     <small>Total in workspace</small>
                   </span>
                 </div>
                 <div>
                   <Clock />
                   <span>
-                    <strong>{pending.length} awaiting review</strong>
+                    <strong><span className="stat-number">{pending.length}</span> <span className="stat-label">awaiting review</span></strong>
                     <small>Needs attention</small>
                   </span>
                 </div>
@@ -239,8 +239,8 @@ export default function App() {
                   <FlaskConical />
                   <span>
                     <strong>
-                      {records.filter(lab).length} lab outcome
-                      {records.filter(lab).length === 1 ? "" : "s"}
+                      <span className="stat-number">{records.filter(lab).length}</span>{" "}
+                      <span className="stat-label">lab outcome{records.filter(lab).length === 1 ? "" : "s"}</span>
                     </strong>
                     <small>Laboratory result received</small>
                   </span>

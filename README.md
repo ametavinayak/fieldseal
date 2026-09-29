@@ -23,7 +23,9 @@ The responsive web app includes a dedicated phone interface: persistent bottom n
   </tr>
 </table>
 
-Screenshots were captured from the working application at an effective 390 CSS-pixel viewport. Sample outcomes are synthetic; the capture shown is not a real drug test.
+These are captures of the working application inside an illustrative phone frame, with a 390px-wide app viewport. The device status icons and time are presentation elements, not readings from a physical phone. Sample outcomes are synthetic; the capture shown is not a real drug test.
+
+For an interactive phone presentation, run the application and open **http://127.0.0.1:8778/?phone-preview**. The phone frame contains the live application, including normal navigation, capture and API access.
 
 ### Dashboard
 

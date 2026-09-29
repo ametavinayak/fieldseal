@@ -307,6 +307,10 @@ Motion remains limited to button state colour and the mobile drawer's 0.2s trans
 
 ## Do's and Don'ts
 
+### Phone presentation
+
+The optional `?phone-preview` route places the live application in a 390 × 844 CSS-pixel device screen. Its illustrative status area and gesture bar surround the embedded application; they are not app controls or device telemetry. A dark rounded device edge and side buttons distinguish this presentation from a narrow desktop screenshot. The preview scales down on shorter windows and links back to the full workspace. Phone layouts hide desktop scrollbar chrome while retaining scrolling, use system-font screen headings, emphasize summary numbers, and retain the visible demo label. README captures are taken directly from this interactive preview.
+
 ### Do:
 
 - Do preserve the navy rail, white working surfaces and restrained teal actions.

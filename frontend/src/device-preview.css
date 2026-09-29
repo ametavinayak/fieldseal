@@ -1,0 +1,89 @@
+.device-preview {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #e8eef3;
+  padding: 24px;
+}
+.device-stage {
+  padding: 24px 28px;
+  flex-shrink: 0;
+}
+.device-body {
+  position: relative;
+  width: 410px;
+  padding: 9px;
+  border: 1px solid #52606b;
+  border-radius: 48px;
+  background: #17212b;
+  box-shadow: 0 16px 24px -16px #10294060, inset 0 0 0 3px #303d49;
+}
+.device-body::before,
+.device-body::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  right: -4px;
+  border-radius: 0 2px 2px 0;
+  background: #303d49;
+}
+.device-body::before { top: 132px; height: 60px; }
+.device-body::after { top: 212px; height: 36px; }
+.device-screen {
+  width: 390px;
+  height: 844px;
+  border-radius: 39px;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+.device-status {
+  height: 32px;
+  flex: 0 0 32px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 24px 0;
+  color: white;
+  background: #102940;
+  font: 600 12px/1 "Segoe UI", sans-serif;
+}
+.device-status > div { display: flex; align-items: center; gap: 4px; }
+.device-camera {
+  position: absolute;
+  top: 8px;
+  left: calc(50% - 6px);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #080e15;
+  box-shadow: inset 0 0 0 3px #1e2f41;
+}
+.device-screen iframe {
+  width: 390px;
+  flex: 1;
+  min-height: 0;
+  border: 0;
+  background: #f3f6f9;
+}
+.device-gesture {
+  height: 20px;
+  flex: 0 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+.device-gesture span { width: 108px; height: 4px; background: #17212b; border-radius: 4px; }
+.device-caption { font-size: 12px; text-align: center; }
+.device-exit { margin-top: 8px; font-size: 12px; }
+@media (max-height: 1000px) { .device-stage { zoom: .84; } }
+@media (max-height: 820px) { .device-stage { zoom: .7; } }
+@media (max-width: 500px) {
+  .device-preview { padding: 12px 0; }
+  .device-stage { padding: 16px 0; zoom: .84; }
+}
